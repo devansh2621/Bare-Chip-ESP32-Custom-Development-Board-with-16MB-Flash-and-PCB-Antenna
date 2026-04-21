@@ -1,0 +1,2 @@
+# Bare-Chip-ESP32-Custom-Development-Board-with-16MB-Flash-and-PCB-Antenna
+Custom 4-layer ESP32 bare-chip dev board (no module). Features dual buck power architecture, ideal diode power ORing, USB-C with ESD protection, CP2102N auto-reset, 16MB QSPI flash, PCB MIFA antenna, dual crystal setup, and dedicated decoupling across all rails. Designed with signal integrity and debug access as core priorities.
