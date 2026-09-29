@@ -128,7 +128,7 @@ Bridges USB ↔ UART for serial comms, firmware upload, and debug logging. Also 
 
 USB-C → ESD (USBLC6-2SC6) → 22Ω Series Resistors → CP2102N → ESP32
 
-ESD diode **must** come before the IC. Series resistors match impedance to ~90Ω differential.
+ESD diode **must** come before the IC. Series resistors to damp signal edges and match impedance to ~90Ω differential.
 
 ### Connections
 
