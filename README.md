@@ -3,6 +3,7 @@ Custom 4-layer ESP32 bare-chip dev board (no module). Features dual buck power a
 
 > [!WARNING]
 > **Known issues in v2.0.** These files still contain three schematic mistakes. A fixed version (v2.1) is coming soon.
+> **All files in this repo (schematic, PCB layout, Gerber files, BOM and documentation) are still v2.0 and are yet to be updated to v2.1.**
 > **Please don't order these files as they are until v2.1 is uploaded.**
 
 ## ⚠️ Known Issues (v2.0)
@@ -21,6 +22,7 @@ On the ESP32, **SD2 is HOLD** and **SD3 is WP**, but on the flash chip **IO2 is 
 
 > [!NOTE]
 > All three fixes are already applied in the Altium redesign, and will be applied to these EasyEDA files as **v2.1**.
+> Until then, the schematic, PCB layout, Gerber files, BOM and documentation here all still show the v2.0 mistakes.
 
 # Bare Chip ESP32 Custom Development Board
 
