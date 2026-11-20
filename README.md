@@ -1,6 +1,27 @@
 # Bare-Chip-ESP32-Custom-Development-Board-with-16MB-Flash-and-PCB-Antenna
 Custom 4-layer ESP32 bare-chip dev board (no module). Features dual buck power architecture, ideal diode power ORing, USB-C with ESD protection, CP2102N auto-reset, 16MB QSPI flash, PCB MIFA antenna, dual crystal setup, and dedicated decoupling across all rails. Designed with signal integrity and debug access as core priorities.
 
+> [!WARNING]
+> **Known issues in v2.0.** These files still contain three schematic mistakes. A fixed version (v2.1) is coming soon.
+> **Please don't order these files as they are until v2.1 is uploaded.**
+
+## ⚠️ Known Issues (v2.0)
+
+| # | Block | Mistake | Correct connection | Effect |
+|---|-------|---------|--------------------|--------|
+| 1 | **Flash (W25Q128JV)** | SD2 → IO2, SD3 → IO3 (connected by number) | **SD2 (HOLD) → IO3**, **SD3 (WP) → IO2** | Works in DIO at 40 MHz. **QIO at 80 MHz will not boot.** |
+| 2 | **LM66100 ideal diodes** | CE# tied to VIN | **CE# → VOUT** | Diodes stay always on, so reverse current is not blocked between the USB and DC inputs. |
+| 3 | **TPS62163 / TPS62162 bucks** | 100k on VOS, PG tied directly to the rail | **VOS → output directly**, **100k as pull up on PG** | PG sinks current from the rail at every power up. VOS senses the output through 100k. |
+
+### Why the flash mistake hides in DIO mode
+On the ESP32, **SD2 is HOLD** and **SD3 is WP**, but on the flash chip **IO2 is WP** and **IO3 is HOLD**. The numbers don't line up.
+
+- **DIO mode:** only IO0 and IO1 carry data. HOLD and WP are just held high, so the swap has no effect.
+- **QIO mode:** all four lines carry data and address. With IO2 and IO3 crossed, bits 2 and 3 are swapped in every transfer, so the ESP32 cannot read its own firmware.
+
+> [!NOTE]
+> All three fixes are already applied in the Altium redesign, and will be applied to these EasyEDA files as **v2.1**.
+
 # Bare Chip ESP32 Custom Development Board
 
 > Hardware design documentation and learning notes for a custom ESP32 development board built around the bare ESP32 chip (no module).
